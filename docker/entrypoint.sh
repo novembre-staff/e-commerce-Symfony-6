@@ -3,6 +3,12 @@
 # Exit on error
 set -e
 
+echo "Creating .env file if not exists..."
+if [ ! -f /var/www/html/.env ]; then
+    cp /var/www/html/.env.example /var/www/html/.env
+    echo ".env file created from .env.example"
+fi
+
 echo "Warming up cache..."
 php bin/console cache:warmup --env=prod
 
