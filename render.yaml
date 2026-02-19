@@ -5,6 +5,10 @@ services:
     repo: https://github.com/novembre-staff/e-commerce-Symfony-6
     branch: main
     dockerfilePath: ./Dockerfile
+    preStartCommand: |
+      if [ ! -f .env ]; then
+        cp .env.example .env
+      fi
     envVars:
       - key: APP_ENV
         value: prod
